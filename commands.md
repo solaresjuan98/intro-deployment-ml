@@ -31,4 +31,35 @@ jupyter notebook
 pip install dvc
 ##
 pip install dvc[gs]
+##
+dvc init
+
+## 
+export GOOGLE_APPLICATION_CREDENTIALS=$(realpath svcaccount.json)
+
 ```
+
+2. In Google Cloud Storage create a new Bucket called `model-dataset-tracker`
+
+3. Connect to Google Cloud storage
+
+```sh
+dvc remote add dataset-track gs://<gcs_bucket_name>/dataset
+```
+
+```sh
+dvc add dataset/opening_gross.csv --to-remote -r dataset-track
+```
+
+```sh
+dvc add dataset/movies.csv --to-remote -r dataset-track
+```
+
+4. Model
+
+```sh
+## add remote
+dvc remote add model-tracker gs://<gcs_bucket_name>/model
+
+```
+
