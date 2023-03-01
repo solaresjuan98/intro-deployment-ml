@@ -25,3 +25,10 @@ jupyter notebook
 ```
 
 ## Implementing DVC 
+
+1. In the venv environment, install dvc
+```sh
+pip install dvc
+##
+pip install dvc[gs]
+```
