@@ -1,0 +1,7 @@
+venv/
+-ipynb_checkpoints/
+svcaccount
+svc_acc.json
+*.json
+*.csv
+*.pkl
