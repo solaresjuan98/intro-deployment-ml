@@ -42,14 +42,17 @@ pip install dvc[gs]
 ##
 dvc init
 
-## 
-export GOOGLE_APPLICATION_CREDENTIALS=$(realpath svcaccount.json)
-
 ```
 
-2. In Google Cloud Storage create a new Bucket called `model-dataset-tracker`
+2. Create a service account with Cloud Storage Manager role and generate the JSON key
+3. Set environment variable to the path of the service account json key
+```sh
+export GOOGLE_APPLICATION_CREDENTIALS=/path/to/keyfile.json
+```
 
-3. Connect to Google Cloud storage
+4. In Google Cloud Storage create a new Bucket called `model-dataset-tracker`
+
+5. Connect to Google Cloud storage
 
 * `dvc remote` is used to add a new remote storage where a dataset can be stored.
 
@@ -67,7 +70,7 @@ dvc add dataset/opening_gross.csv --to-remote -r dataset-track
 dvc add dataset/movies.csv --to-remote -r dataset-track
 ```
 
-4. Model
+5. Model
 ```sh
 ## add remote
 dvc remote add model-tracker gs://<gcs_bucket_name>/model
